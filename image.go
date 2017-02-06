@@ -45,5 +45,8 @@ func (imageFile *imageFile) Content() ([]byte, string, error) {
  */
 func (imageFile *imageFile) EncodeBase64() (string, string, error) {
 	imageBytes, mimeType, err := imageFile.Content()
+	if err != nil {
+		return "", "", err
+	}
 	return base64.StdEncoding.EncodeToString(imageBytes), mimeType, err
 }
